@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.main-container {
+  max-width: 100%; 
+  display: grid;
+  position: relative;
+ 
+  left: 0px;
+  place-items: center;
+  text-align: center;
+  background: rgb(35, 35, 34);
+  background-image: url(../images/12.jpg);
+  background-repeat: no-repeat;
+  background-position: 0px -215px;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100vh;
+  
+}
+
+.feedback-container {
+  
+  position: absolute;
+  margin-top: 10px;
+  width: 600px;
+  background: #6d1b04aa;
+  background-image: url(../images/12.jpg);
+  background-repeat: no-repeat;
+  background-position: 0px -215px;
+  background-attachment: fixed;
+  background-size: cover;
+  padding: 20px 30px;
+  border: 1px solid hsla(0, 33%, 99%, 0.941);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.feedback-container .post {
+  display: none;
+}
+
+.feedback-container .text {
+  font-size: 25px;
+  color: #fdfdfe;
+  font-weight: 500;
+}
+
+.feedback-container .edit {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 16px;
+  color: #e8f80a;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.feedback-container .edit:hover {
+  text-decoration: underline;
+}
+
+.feedback-container .radio {
+  display: none;
+}
+
+.star-widget label {
+  font-size: 40px;
+  color: #fefefd;
+  padding: 10px;
+  float: right;
+  transition: all 0.2s ease;
+}
+
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label {
+  color: rgb(249, 242, 42);
+}
+
+input:checked ~ label {
+  color: rgb(246, 228, 28);
+}
+
+input#rate-5:checked ~ label {
+  color: rgb(9, 251, 5);
+  text-shadow: 0 0 20px #952;
+}
+
+#rate-1:checked ~ form header:before {
+  content: "Bad";
+}
+
+#rate-2:checked ~ form header:before {
+  content: "Fine";
+}
+
+#rate-3:checked ~ form header:before {
+  content: "Good";
+}
+
+#rate-4:checked ~ form header:before {
+  content: "Great";
+}
+
+#rate-5:checked ~ form header:before {
+  content: "Excellent ";
+}
+
+.feedback-container form {
+  display: none;
+}
+
+input:checked ~ form {
+  display: block;
+}
+
+form header {
+  width: 300px;
+  font-size: 25px;
+  color: rgba(254, 254, 253, 0.925);
+  font-weight: 500;
+  margin: 5px 0 20px 0;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+form .textarea {
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+}
+
+form .textarea textarea {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  color: #040404;
+  border: 1px solid #333;
+  background: #f5f0f0;
+  padding: 10px;
+  font-size: 17px;
+  resize: none;
+}
+
+.textarea textarea:focus {
+  border-color: #444;
+}
+
+form .btn {
+  height: 45px;
+  width: 100%;
+  margin: 15px 0;
+}
+
+form .btn button {
+  height: 100%;
+  width: 100%;
+  border: 1px solid #444;
+  outline: none;
+  background: #faf7f7;
+  color: #999;
+  font-size: 17px;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+form .btn button:hover {
+  background: #1b1b1b;
+}
+.form-section .post select{
+  display:none;
+}
+
+.form-section {
+  width: 500px;
+  display: grid;
+  margin-bottom: 20px;
+}
+
+.form-section label {
+  color: black;
+  font-size: 15px;
+}
+
+.form-section input,
+.form-section select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #333;
+  background: #f5f0f0;
+  font-size: 17px;
+}
+
+.text-danger {
+  color: red;
+  font-size: 14px;
+}
+/* .form-hidden {
+  display: none;
+} */
+/* Add these styles for the phone number section */
+.form-Phone {
+  width: 500px;
+  display: grid;
+  align-items: center;
+  /* justify-content: flex-start; */
+  /* margin-bottom: 20px; */
+  margin-right: 200px; 
+}
+.form-Phone label {
+  color: rgb(247, 244, 244);
+  font-size: 13px;
+  padding-right: 10px;
+  /* margin-left: -400px; */
+  
+}
+
+.form-Phone input {
+  width: 200px;
+  padding: 8px;
+  border: 1px solid #333;
+  background: #f5f0f0;
+  font-size: 17px;
+}
+
+/* CSS for form-Office */
+.form-Office,
+.form-Desk,
+.form-HelpDesk {
+  width: 400px;
+  display: grid;
+  margin-bottom: 20px;
+}
+
+.form-Office label,
+.form-Desk label,
+.form-HelpDesk label {
+  color: black;
+  font-size: 15px;
+}
+
+.form-Office select,
+.form-Desk select,
+.form-HelpDesk select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #333;
+  background: #f5f0f0;
+  font-size: 17px;
+}
+
