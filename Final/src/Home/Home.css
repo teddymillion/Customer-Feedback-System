@@ -141,3 +141,41 @@
     color:rgb(252, 251, 251);
 
   } */
+
+  /* Responsive styles */
+@media (max-width: 1200px) {
+  .home {
+    font-size: 1.8em;
+    margin-right: 300px;
+    line-height: 60px;
+  }
+}
+
+@media (max-width: 992px) {
+  .home {
+    font-size: 1.6em;
+    margin-right: 200px;
+    line-height: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home {
+    font-size: 1.4em;
+    width: 80%;
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .wrapper .sliders {
+    bottom: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .home {
+    font-size: 1.2em;
+    line-height: 40px;
+    margin-bottom: 150px;
+  }
+}

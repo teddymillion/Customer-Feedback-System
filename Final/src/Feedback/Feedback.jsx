@@ -26,6 +26,7 @@ function Feedback() {
     setSelectedDesk(selectedDesk);
     setShowError(false); // Hide the error message
   };
+  
   const OfficeLabels = {
     en:[
     "Minister Office",
@@ -62,7 +63,7 @@ function Feedback() {
       "Sector & Regional Councils Desk",
       "Private Sector Industries Technology Desk",
     ],
-    "Innovatation and Reserch Sector": [
+    "Innovation and Research Sector": [
       "National Research Office",
       "Technology Transformation Office",
       "Technology Innovation and Management Office",
@@ -99,7 +100,7 @@ function Feedback() {
       "የዘርፍ ካውንስሎችና የክልሎች ዴስክ",
       "የግል ዘርፍ ኢንዱስትሪዎች ቴክኖሎጂ ዴስክ",
     ],
-    "ኢኖቬሽን ምርምር ዘርፍ":[
+    "ኢኖቬሽን ምርምር ዘርፍ ":[
       "ሀገራዊ የምርምር ልማት መሪ ሥራ አስፈጻሚ",
       "የቴክኖሎጂ ሽግግርና ልማት መሪ ሥራ አስፈጻሚ",
       "የኢኖቬሽን ቴክኖሎጂ መረጃ ልማትና አስተዳደር ዴስክ",
@@ -201,8 +202,7 @@ function Feedback() {
       "Transport Deployment Service Team",
     ],
   };
-  // const [showWidget, setShowWidget] = useState(true);
-  // const [showPost, setShowPost] = useState(false);
+ 
 
   useEffect(() => {
     const handleBtnClick = () => {
@@ -237,21 +237,43 @@ function Feedback() {
     setShowPost(false);
   };
   
- // useEffect to handle language changes
- useEffect(() => {
-  // Fetch translations or switch logic depending on your implementation
-}, [language]);
+//  // useEffect to handle language changes
+//  useEffect(() => {
+//   // Fetch translations or switch logic depending on your implementation
+// }, [language]);
 
-// Function to toggle between English and Amharic
+// // Function to toggle between English and Amharic
+// const toggleLanguage = () => {
+//   setLanguage(prevLanguage => prevLanguage === 'en' ? 'am' : 'en');
+// };
+useEffect(() => {
+  // Code to fetch help desk phone number based on selected office and desk
+  // Assuming this is an async operation, otherwise, handle the logic directly here
+  const fetchHelpDeskPhoneNumber = async () => {
+    // Assuming some async logic to fetch phone number based on selectedOffice and selectedDesk
+    const phoneNumber = await someAsyncFunction(selectedOffice, selectedDesk, selectedHelpDesk);
+    setPhone(phoneNumber);
+  };
+
+  // Fetch the help desk phone number whenever either selectedOffice or selectedDesk changes
+  if (selectedOffice && selectedDesk) {
+    fetchHelpDeskPhoneNumber();
+  }
+}, [selectedOffice, selectedDesk]);
+
 const toggleLanguage = () => {
-  setLanguage(prevLanguage => prevLanguage === 'en' ? 'am' : 'en');
+  const newLanguage = language === 'en' ? 'am' : 'en';
+  setLanguage(newLanguage);
 };
-
   return (
     <div className='main-container'>
-     <div> <button onClick={toggleLanguage} className="language-toggle">{language === 'en' ? 'አማርኛ' : 'English'}</button></div>
+    
       <div className="feedback-container">
-      
+
+      <div className="language-toggle" onClick={toggleLanguage}>
+        {language === 'en' ? 'አማርኛ' : 'English'}
+      </div>
+     
       <div className="form-Office">
   <label htmlFor="office">{language === 'en' ? 'Sector' : 'ዘርፍ'}:</label>
   <select
@@ -267,9 +289,9 @@ const toggleLanguage = () => {
     } form-select form-select-md`}
   >
     <option value="">{language === 'en' ? 'Select Sector' : 'ዘርፍ ይምረጡ'}</option>
-    {OfficeLabels[language]?.map((label, index) => (
-      <option key={index} value={label}>
-        {label}
+    {OfficeLabels[language].map((sector, index) => (
+      <option key={index} value={sector}>
+        {sector}
       </option>
     ))}
   </select>
@@ -292,7 +314,7 @@ const toggleLanguage = () => {
     } form-select form-select-md`}
   >
     <option value="">{language === 'en' ? 'Select Office' : 'ጽሕፈት ቤት ይምረጡ'}</option>
-    {deskOptionsByOffice[selectedOffice]?.[language]?.map((desk, index) => (
+    {deskOptionsByOffice[language]?.[selectedOffice]?.map((desk, index) => (
       <option key={index} value={desk}>
         {desk}
       </option>
@@ -318,11 +340,13 @@ const toggleLanguage = () => {
     } form-select form-select-md`}
   >
     <option value="">{language === 'en' ? 'Select Desk' : 'ዴስክ ይምረጡ'}</option>
-    {deskHelpOptionsByOffice[selectedDesk]?.map((helpDesk, index) => (
-      <option key={index} value={helpDesk}>
-        {helpDesk}
-      </option>
-    ))}
+    
+      {selectedDesk && deskHelpOptionsByOffice[language]?.[selectedDesk]?.map((helpDesk, index) => (
+        <option key={index} value={helpDesk}>
+          {helpDesk}
+        </option>
+      ))}
+    
   </select>
   {selectedHelpDesk === "" && showError && (
     <span className="text-danger">{language === 'en' ? 'Please select Desk!' : 'እባኮትን ዴስክ ይምረጡ'}</span>
