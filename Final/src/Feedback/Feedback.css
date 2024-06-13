@@ -260,7 +260,7 @@ form .btn button:hover {
   font-size: 17px;
 }
 
-.language-toggle {
+.lang-toggle {
   background-color: #ffffff;
   color: #333333;
   border: 2px solid #333333;
@@ -270,16 +270,16 @@ form .btn button:hover {
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   position: absolute;
-  top: 125px;
-  right: 10px;
+  bottom: 540px;
+  left: 1000px;
   z-index: 1000;
 }
 
-.language-toggle:hover {
+.lang-toggle:hover {
   background-color: #110f0f;
   color: #ffffff;
 }
 
-.language-toggle:focus {
+.lang-toggle:focus {
   outline: none;
 }

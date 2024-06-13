@@ -3,7 +3,6 @@ import './Compliant.css';
 
 const Compliant = () => {
   const [feedback, setFeedback] = useState('');
-  const [language, setLanguage] = useState('en');
 
   const handleFeedbackChange = (event) => {
     setFeedback(event.target.value);
@@ -25,19 +24,14 @@ const Compliant = () => {
 
   const wordCount = countWords(feedback);
 
-  // Function to toggle between English and Amharic
-  const toggleLanguage = () => {
-    setLanguage(prevLanguage => prevLanguage === 'en' ? 'am' : 'en');
-  };
-
   return (
     <div className="compliant-container">
-      <h1 className="compliant-main-title">{language === 'en' ? 'Create New Complaint' : 'አዲስ ቅሬታ ይፍጠሩ'}</h1>
-      <p className="confidentiality-note">{language === 'en' ? 'Your confidentiality will be ensured.' : 'ሚስጥራዊነትዎ ይረጋገጣል።'}</p>
-      <button onClick={toggleLanguage} className="language-toggle">{language === 'en' ? 'አማርኛ' : 'English'}</button>
+      <h1 className="compliant-main-title">Create New Complaint</h1>
+      <p className="confidentiality-note">Your confidentiality will be ensured.</p>
       <form className="feedback-form" onSubmit={handleSubmit}>
-        <input type="text" className="input" name="txt" placeholder={language === 'en' ? 'Enter title here' : 'ርዕስ እዚህ ያስገቡ'} /><br />
-        <label className="feedback-label" htmlFor="feedback">{language === 'en' ? 'Please describe the incident*' : 'እባክዎን ክስተቱን ይግለጹ*'}:</label><br />
+       
+        <input type="text" className="input" name="txt" placeholder="Enter title here" /><br />
+        <label className="feedback-label" htmlFor="feedback">Please describe the incident*</label><br />
         <textarea
           className="feedback-textarea"
           id="feedback"
@@ -46,14 +40,15 @@ const Compliant = () => {
           onChange={handleFeedbackChange}
           rows="6"
           cols="50"
-          placeholder={language === 'en' ? 'Type your complaint...' : 'ቅሬታዎን ይተይቡ...'} // Placeholder for the textarea
-          title={language === 'en' ? 'Create a new compliant' : 'አዲስ ቅሬታ ይፍጠሩ'} // Title attribute for the textarea
+          placeholder="Type your complaint..." // Placeholder for the textarea
+          title="Create a new compliant" // Title attribute for the textarea
           required // Adding required attribute for accessibility
           aria-required="true" // Adding aria-required for screen readers
+        
         /><br />
         {/* Displaying word count */}
-        <div className="word-count">{wordCount} {language === 'en' ? 'words' : 'ቃላት'}</div>
-        <button className="feedback-submit-button" type="submit">{language === 'en' ? 'Submit' : 'አስገባ'}</button>
+        <div className="word-count">{wordCount} words</div>
+        <button className="feedback-submit-button" type="submit">Submit</button>
       </form>
     </div>
   );

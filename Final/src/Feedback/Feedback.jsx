@@ -26,7 +26,10 @@ function Feedback() {
     setSelectedDesk(selectedDesk);
     setShowError(false); // Hide the error message
   };
-  
+  const handleHelpDeskChange = (e) => {
+    setSelectedHelpDesk(e.target.value);
+    setShowError(false); // Hide the error message
+  };
   const OfficeLabels = {
     en:[
     "Minister Office",
@@ -125,82 +128,152 @@ function Feedback() {
   };
 
   const deskHelpOptionsByOffice = {
-    "Legal Service Office": ["Legal Service Office"],
-    "Audit Service Office": ["Audit Service Office"],
-    "Institutional Transition Office": ["Institutional Transition Office"],
-    "Ethics and Anti-Corruption Office": ["Ethics and Anti-Corruption Office"],
-    "Public relations and Communication Office": [
-      "Public relations and Communication Office",
-    ],
-    "Public Relations & Communication Team": [
-      "Public Relations & Communication Team",
-    ],
-    "Women and Social Affairs Office": ["Women and Social Affairs Office"],
-    "Innovation Fund Office": ["Innovation Fund Office"],
+   en: {
+      "Legal Service Office": ["Legal Service Office"],
+      "Audit Service Office": ["Audit Service Office"],
+      "Institutional Transition Office": ["Institutional Transition Office"],
+      "Ethics and Anti-Corruption Office": [
+        "Ethics and Anti-Corruption Office",
+      ],
+      "Public relations and Communication Office": [
+        "Public relations and Communication Office",
+      ],
+      "Public Relations & Communication Team": [
+        "Public Relations & Communication Team",
+      ],
+      "Women and Social Affairs Office": ["Women and Social Affairs Office"],
+      "Innovation Fund Office": ["Innovation Fund Office"],
 
-    "International Relations & Cooperation Desk": [
-      "International Relations & Cooperation Desk",
-    ],
-    "Sector & Regional Councils Desk": ["Sector & Regional Councils Desk"],
-    "Private Sector Industries Technology Desk": [
-      "Private Sector Industries Technology Desk",
-    ],
+      "International Relations & Cooperation Desk": [
+        "International Relations & Cooperation Desk",
+      ],
+      "Sector & Regional Councils Desk": ["Sector & Regional Councils Desk"],
+      "Private Sector Industries Technology Desk": [
+        "Private Sector Industries Technology Desk",
+      ],
 
-    "Policy & Strategy Studies Research Executive": [
-      "Policy & Strategy Studies Research Executive",
-    ],
+      "Policy & Strategy Studies Research Executive": [
+        "Policy & Strategy Studies Research Executive",
+      ],
 
-    "National Research Office": [
-      "National Research Development Desk",
-      "National Research Infrastructure Development Desk",
-      "National Research Ethics and Methodology Development Desk",
-    ],
+      "National Research Office": [
+        "National Research Development Desk",
+        "National Research Infrastructure Development Desk",
+        "National Research Ethics and Methodology Development Desk",
+      ],
 
-    "Technology Transformation Office": [
-      "Innovation & Information Technology Development & Management Desk",
-      "TechnologIcal Transformation and Collaboration Desk",
-      "Indigenous Technology Development Desk",
-    ],
+      "Technology Transformation Office": [
+        "Innovation & Information Technology Development & Management Desk",
+        "TechnologIcal Transformation and Collaboration Desk",
+        "Indigenous Technology Development Desk",
+      ],
 
-    "Technology Innovation and Management Office": [
-      "Innovation Development Desk",
-      "Innovation Infrastructure Development Desk",
-      "Starap & Innovative Enterprise Development Desk 1",
-      "Starap & Innovative Enterprise Development Desk 2",
-    ],
-    "National E-Government Services Office": [
-      "National E-Government Services Development & Management Desk",
-      "National E-Government Strategy Coordination Desk",
-      "National Data Development Coordination Desk",
-    ],
-    "ICT Infrastructure Development and Management Office": [
-      "National Data Center Management Desk",
-      "Cyber Security Desk",
-      "National ICT Infrastructure Development Desk",
-    ],
-    "Digital Economy Development Sector Office": [
-      "Digital Economy Development Standards & Control Desk",
-      "Digital Industry Development Desk",
-      "Digital Society Development Desk",
-    ],
-    "Strategic Affairs Office": [
-      "Planning & Budget Preparation, Monitoring & Evaluation Team",
-    ],
-    "Finance & Procurement Office": ["Procurement Team", "FInance Team"],
-    "Human Resource Competency & Management Office": [
-      "Human Resource Administration Team ",
-      "Human Recourse Competency Development & Management Team",
-      "Records Management Team",
-    ],
-    "Information Communication Technology Office": [
-      "Information Communication Technology Office",
-    ],
-    "Facilities Management Office": [
-      "Property Management Team",
-      "Property Treasury Team",
-      "General Services Team",
-      "Transport Deployment Service Team",
-    ],
+      "Technology Innovation and Management Office": [
+        "Innovation Development Desk",
+        "Innovation Infrastructure Development Desk",
+        "Starap & Innovative Enterprise Development Desk 1",
+        "Starap & Innovative Enterprise Development Desk 2",
+      ],
+      "National E-Government Services Office": [
+        "National E-Government Services Development & Management Desk",
+        "National E-Government Strategy Coordination Desk",
+        "National Data Development Coordination Desk",
+      ],
+      "ICT Infrastructure Development and Management Office": [
+        "National Data Center Management Desk",
+        "Cyber Security Desk",
+        "National ICT Infrastructure Development Desk",
+      ],
+      "Digital Economy Development Sector Office": [
+        "Digital Economy Development Standards & Control Desk",
+        "Digital Industry Development Desk",
+        "Digital Society Development Desk",
+      ],
+      "Strategic Affairs Office": [
+        "Planning & Budget Preparation, Monitoring & Evaluation Team",
+      ],
+      "Finance & Procurement Office": ["Procurement Team", "FInance Team"],
+      "Human Resource Competency & Management Office": [
+        "Human Resource Administration Team ",
+        "Human Recourse Competency Development & Management Team",
+        "Records Management Team",
+      ],
+      "Information Communication Technology Office": [
+        "Information Communication Technology Office",
+      ],
+      "Facilities Management Office": [
+        "Property Management Team",
+        "Property Treasury Team",
+        "General Services Team",
+        "Transport Deployment Service Team",
+      ],
+    },
+    am: {
+      "የሕግ አገልግሎት ሥራ አስፈጻሚ": ["የህግ አገልግሎት ቢሮ"],
+      "የኦዲት ሥራ አስፈጻሚ": ["የኦዲት ሥራ አስፈጻሚ"],
+      "የተቋማዊ ለውጥ ሥራ አስፍጻሚ": ["የተቋማዊ ለውጥ ሥራ አስፍጻሚ"],
+      "የሥነምግባርና ፀረሙስና ሥራ አስፈጻሚ": ["የሥነ-ምግባር እና ፀረ-ሙስና ጽሕፈት ቤት"],
+      "የህዝብ ግንኙነትና ኮሙኒኬሽን ሥራ አስፈጻሚ": ["የህዝብ ግንኙነት እና ኮሙኒኬሽን ቡድን"],
+      "የሴቶችና የማህበራዊ ጉዳዮች አካቶ ትግበራ ሥራ አስፈጻሚ": ["የሴቶችና ማህበራዊ ጉዳይ ጽ/ቤት"],
+      "የኢኖቬሽን ፈንድ ጽሕፈት ቤት": ["የኢኖቬሽን ፈንድ ቢሮ"],
+
+      "የአለም ዓቀፍ ግንኙነትና ትብብር ዴስክ": ["ዓለም አቀፍ ግንኙነት እና ትብብር ዴስክ"],
+      "የዘርፍ ካውንስሎችና የክልሎች ዴስክ": ["የሴክተር እና የክልል ምክር ቤቶች ዴስክ"],
+      "የግል ዘርፍ ኢንዱስትሪዎች ቴክኖሎጂ ዴስክ": ["የግል ዘርፍ ኢንዱስትሪዎች ቴክኖሎጂ ዴስክ"],
+
+      "የፖሊሲና ስትራቴጂ ጥናትና ምርምር ሥራ አስፈጻሚ": ["የፖሊሲ እና የስትራቴጂ ጥናቶች ጥናት አስፈፃሚ"],
+      ///////
+      "ሀገራዊ የምርምር ልማት መሪ ሥራ አስፈጻሚ": [
+        "ብሔራዊ የምርምር ልማት ዴስክ",
+        "ብሔራዊ የምርምር መሰረተ ልማት ልማት ዴስክ",
+        "የአገራዊ የምርምር ስነ-ምግባር እና ዘዴ ልማት ዴስክ",
+      ],
+
+      "የቴክኖሎጂ ሽግግርና ልማት መሪ ሥራ አስፈጻሚ": [
+        "ኢኖቬሽን እና ኢንፎርሜሽን ቴክኖሎጂ ልማት እና አስተዳደር ዴስክ",
+        "ቴክኖሎጂካል ትራንስፎርሜሽን እና የትብብር ዴስክ",
+        "የአገር በቀል ቴክኖሎጂ ልማት ዴስክ",
+      ],
+
+      "የኢኖቬሽን ቴክኖሎጂ መረጃ ልማትና አስተዳደር ዴስክ": [
+        "የፈጠራ ልማት ዴስክ",
+        "የኢኖቬሽን መሠረተ ልማት ልማት ዴስክ",
+        "ስታራፕ እና ፈጠራ ኢንተርፕራይዝ ልማት ዴስክ 1",
+        "ስታራፕ እና ፈጠራ ኢንተርፕራይዝ ልማት ዴስክ 2",
+      ],
+
+      "የብሄራዊ የኤሌክትሮኒክ መንግስት ልማት መሪ ሥራ አስፈጻሚ": [
+        "ብሔራዊ ኢ-መንግስት አገልግሎቶች ልማት እና አስተዳደር ዴስክ",
+        "የብሔራዊ ኢ-መንግስት ስትራቴጂ ማስተባበሪያ ዴስክ",
+        "የብሔራዊ መረጃ ልማት ማስተባበሪያ ዴስክ",
+      ],
+      "የአይሲቲ መሰረተ ልማት ግንባታ እና አስተዳደር መሪ ሥራ አስፈጻሚ": [
+        "ብሔራዊ የውሂብ ማዕከል አስተዳደር ዴስክ",
+        "የሳይበር ደህንነት ዴስክ",
+        "ብሔራዊ የአይሲቲ መሠረተ ልማት ልማት ዴስክ",
+      ],
+
+      "የዲጂታል ኢኮኖሚ ልማት ዘርፍ መሪ ሥራ አስፈጻሚ": [
+        "ዲጂታል ኢኮኖሚ ልማት ደረጃዎች እና ቁጥጥር ዴስክ",
+        "ዲጂታል ኢንዱስትሪ ልማት ዴስክ",
+        "የዲጂታል ማህበረሰብ ልማት ዴስክ",
+      ],
+
+      "የስትራቴጂክ ጉዳዮች ሥራ አስፈጻሚ": ["የእቅድ እና የበጀት ዝግጅት፣ ክትትል እና ግምገማ ቡድን"],
+      "የግዢና ፋይናንስ ሥራ አስፈጻሚ": ["የግዥ ቡድን", "የፋይናንስ ቡድን"],
+      "የብቃትና የሰው ሀይል አስተዳደር ሥራ አስፈጻሚ": [
+        "የሰው ሀብት አስተዳደር ቡድን",
+        "የሰው ጥቅም ብቃት ልማት እና አስተዳደር ቡድን",
+        "የመዝገብ አስተዳደር ቡድን",
+      ],
+      "የኢንፎርሜሽን ኮሚኒኬሽን ቴክኖሎጂ ሥራ አስፈጻሚ": ["የኢንፎርሜሽን ኮሙኒኬሽን ቴክኖሎጂ ቢሮ"],
+      "የመሠረታዊ አገልግሎት ሥራ አስፈጻሚ": [
+        "የንብረት አስተዳደር ቡድን",
+        "የንብረት ግምጃ ቤት ቡድን",
+        "አጠቃላይ አገልግሎቶች ቡድን",
+        "የትራንስፖርት ማሰማራት አገልግሎት ቡድን",
+      ],
+    },
   };
  
 
@@ -237,29 +310,15 @@ function Feedback() {
     setShowPost(false);
   };
   
-//  // useEffect to handle language changes
-//  useEffect(() => {
-//   // Fetch translations or switch logic depending on your implementation
-// }, [language]);
+ // useEffect to handle language changes
+ useEffect(() => {
+  // Fetch translations or switch logic depending on your implementation
+}, [language]);
 
 // // Function to toggle between English and Amharic
 // const toggleLanguage = () => {
 //   setLanguage(prevLanguage => prevLanguage === 'en' ? 'am' : 'en');
 // };
-useEffect(() => {
-  // Code to fetch help desk phone number based on selected office and desk
-  // Assuming this is an async operation, otherwise, handle the logic directly here
-  const fetchHelpDeskPhoneNumber = async () => {
-    // Assuming some async logic to fetch phone number based on selectedOffice and selectedDesk
-    const phoneNumber = await someAsyncFunction(selectedOffice, selectedDesk, selectedHelpDesk);
-    setPhone(phoneNumber);
-  };
-
-  // Fetch the help desk phone number whenever either selectedOffice or selectedDesk changes
-  if (selectedOffice && selectedDesk) {
-    fetchHelpDeskPhoneNumber();
-  }
-}, [selectedOffice, selectedDesk]);
 
 const toggleLanguage = () => {
   const newLanguage = language === 'en' ? 'am' : 'en';
@@ -270,7 +329,7 @@ const toggleLanguage = () => {
     
       <div className="feedback-container">
 
-      <div className="language-toggle" onClick={toggleLanguage}>
+      <div className="lang-toggle" onClick={toggleLanguage}>
         {language === 'en' ? 'አማርኛ' : 'English'}
       </div>
      
