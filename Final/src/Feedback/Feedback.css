@@ -206,10 +206,7 @@ form .btn button:hover {
   color: red;
   font-size: 14px;
 }
-/* .form-hidden {
-  display: none;
-} */
-/* Add these styles for the phone number section */
+
 .form-Phone {
   width: 500px;
   display: grid;
